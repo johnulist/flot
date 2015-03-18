@@ -143,7 +143,7 @@ the plot, see below.
 
 The rest of the options are all documented below as they are the same
 as the default options passed in via the options parameter in the plot
-commmand. When you specify them for a specific data series, they will
+command. When you specify them for a specific data series, they will
 override the default options for the plot for that data series.
 
 Here's a complete example of a simple data specification:
@@ -573,6 +573,19 @@ In Python you can get it with something like:
 
 ```python
 calendar.timegm(datetime_object.timetuple()) * 1000
+```
+In Ruby you can get it using the `#to_i` method on the
+[`Time`](http://apidock.com/ruby/Time/to_i) object. If you're using the
+`active_support` gem (default for Ruby on Rails applications) `#to_i` is also
+available on the `DateTime` and `ActiveSupport::TimeWithZone` objects. You
+simply need to multiply the result by 1000:
+
+```ruby
+Time.now.to_i * 1000     # => 1383582043000
+# ActiveSupport examples:
+DateTime.now.to_i * 1000 # => 1383582043000
+ActiveSupport::TimeZone.new('Asia/Shanghai').now.to_i * 1000
+# => 1383582043000
 ```
 
 In .NET you can get it with something like:
